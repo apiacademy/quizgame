@@ -1,0 +1,4 @@
+
+---
+docker_host: true 
+service_port_core: 5000
