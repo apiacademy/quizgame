@@ -1,0 +1,12 @@
+  # @TODO: there's some bug here, possibly related to subshelling.
+  
+  - name: "Install NVM"
+    # The whole ruthless "rm" thing should be improved when we have more time
+    shell: "rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`"
+  
+  - name: "make sure nvm starts at startup"
+    template: src=bash_profile.j2 dest=/home/ubuntu/.bash_profile
+      
+  - name: "Install Latest Node"
+    shell: ". ~/.nvm/nvm.sh && nvm install stable && nvm alias default stable"
+    

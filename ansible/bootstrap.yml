@@ -2,4 +2,5 @@
   sudo: yes
   roles:
     - common_baseline
+    - node-enabled
     - docker_hosts
