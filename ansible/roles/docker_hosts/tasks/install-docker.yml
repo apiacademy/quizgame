@@ -76,3 +76,9 @@
     service:
       name: docker
       state: restarted
+  
+  - name: Install Docker Compose
+    shell: pip install -U docker-compose
+    
+  - name: Ensure proper permissions on docker-compose
+    shell: chmod +x /usr/local/bin/docker-compose
