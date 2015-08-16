@@ -12,7 +12,10 @@
       - zip
       - unzip      
       - sudo   
-      
-  # we only need this for Docker hosts    
-  - include: add-layerfs-support.yml
-    when: docker_host is defined
+    
+  - debug: msg="Linux Kernel {{ ansible_kernel }}"
+        
+  # we only need this for Docker hosts and if Kernel is not already new enough (e.g. 4.x)
+  - name: "Update Linux kernel to support layerfs"
+    include: add-overlayfs-support.yml
+    when: docker_host is defined and ansible_kernel | match("3.\d.*-generic")
